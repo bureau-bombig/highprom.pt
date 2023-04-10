@@ -1,0 +1,16 @@
+---
+import HtmlHead from "./HtmlHead.astro";
+import MainHeader from "./MainHeader.astro";
+import MainFooter from "./MainFooter.astro";
+---
+
+<html lang="en">
+  <HtmlHead />
+  <body class="bg-slate-900 text-white">
+    <MainHeader />
+
+    <slot />
+
+    <MainFooter />
+  </body>
+</html>

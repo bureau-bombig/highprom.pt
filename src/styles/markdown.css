@@ -1,0 +1,18 @@
+.markdown h2 {
+  font-size: 1.875rem;
+  font-weight: 800;
+  margin-block-end: 1rem;
+}
+
+.markdown p {
+  font-size: 1rem;
+  line-height: 1.75;
+  margin-block-end: 2rem;
+}
+
+.markdown pre {
+  margin-block-end: 2rem;
+  padding: 2rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}

@@ -1,0 +1,32 @@
+---
+import { Icon } from "astro-icon";
+console.log(Astro.props);
+const { slug } = Astro.props.data;
+const { title, description, tags, source } = Astro.props.data.data;
+---
+
+<article class="flex flex-col gap-4 border border-slate-500 rounded-md p-8 w-full">
+  <header class="flex flex-row items-center font-extrabold text-xl gap-6">
+    <div class="w-1/12">
+      <Icon name="teenyicons:edit-1-outline" width="24" height="24" />
+    </div>
+    <a href={`/prompt/${slug}`}>
+      <h3 class="leading-normal">{title}</h3>
+    </a>
+  </header>
+  <main>
+    <a href={`/prompt/${slug}`}>
+      <p class="text-slate-500 leading-relaxed">
+        {description}
+      </p>
+    </a>
+  </main>
+  <footer class="flex flex-row text-sm">
+    <ul class="flex flex-row gap-8 mr-auto text-slate-500">
+      {tags.map((tag) => <li>{tag}</li>)}
+    </ul>
+    <span class="text-slate-500">
+      source: <a href={source.url} class="underline" target="_blank" rel="noopener noreferrer">{source.name}</a>
+    </span>
+  </footer>
+</article>

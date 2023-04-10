@@ -1,0 +1,49 @@
+---
+import "../../styles/markdown.css";
+import MainLayout from "../../layouts/MainLayout.astro";
+import Badge from "../../components/Badge.astro";
+import { getCollection, CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("prompt");
+  //console.log(posts);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<"prompt">;
+}
+
+const { post } = Astro.props;
+const { title, description, source, tags, pubDate } = post.data;
+const { Content } = await post.render();
+---
+
+<MainLayout>
+  <main class="w-[768px] m-auto py-32 min-h-screen flex flex-col gap-8">
+    <header class="flex flex-col gap-4">
+      <span class="uppercase tracking-wide text-indigo-500 tracking-widest">GPT-Prompt</span>
+      <div class="text-slate-500 flex flex-row gap-4">
+        {tags.map((tag) => <Badge small text={tag} />)}
+      </div>
+      <h1 class="text-3xl font-extrabold">{title}</h1>
+      <div>
+        <p>{description}</p>
+      </div>
+
+      <div class="flex flex-row gap-8 text-slate-500">
+        <p class="text-sm">
+          source: <a href={source.url} class="underline" target="_blank" rel="noreferrer noopener">{source.name}</a>
+        </p>
+        <p>Date: {pubDate.toUTCString()}</p>
+      </div>
+    </header>
+    <main class="markdown">
+      <Content />
+    </main>
+    <footer></footer>
+  </main>
+</MainLayout>

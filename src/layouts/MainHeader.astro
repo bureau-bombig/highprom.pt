@@ -1,0 +1,22 @@
+---
+import Button from "../components/Button.astro";
+---
+
+<header class="absolute left-0 right-0 z-50 px-4 sm:px-0">
+  <nav class="max-w-[1024px] m-auto py-5 flex flex-row h-full items-center gap-4 sm:gap-8 border-b">
+    <p class="font-extrabold text-sm sm:text-2xl mr-auto sm:mr-0"><a href="/">highpromp.pt</a></p>
+
+    <ul class="flex flex-row text-xs sm:text-base gap-4 sm:gap-8 mr-auto">
+      <li><a href="/#prompts">Prompts</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+    <ul class="flex flex-row gap-3 items-center">
+      <li><a href="/contribute"><Button text="Contribute" /></a></li>
+      <li class="hidden sm:block">
+        <a href="https://github.com/bureau-bombig/highprom.pt" target="_blank" rel="noreferre noopener"
+          ><Button icon="mdi:github" /></a
+        >
+      </li>
+    </ul>
+  </nav>
+</header>
